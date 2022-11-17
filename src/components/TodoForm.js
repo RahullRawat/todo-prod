@@ -25,7 +25,7 @@ const TodoForm = ({
 	const addTodoHandler = (e) => {
 		e.preventDefault();
 		if (!todoInput.title && !todoInput.desc) {
-			alert("Title and Description can't be empty");
+			toast.warning("Title and Description can't be empty");
 		} else if (todoInput.title && todoInput.desc && toggleBtn) {
 			setTodos(
 				todos.map((ele) => {

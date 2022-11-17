@@ -29,19 +29,18 @@ function App() {
 	const [isEdit, setIsEdit] = useState(null);
 
 	useEffect(() => {
+		const handleFilterTodo = () => {
+			if (filter === "completed") {
+				setFilteredTodos(todos.filter((todo) => todo.completed === true));
+			} else if (filter === "pending") {
+				setFilteredTodos(todos.filter((todo) => todo.completed === false));
+			} else {
+				setFilteredTodos(todos);
+			}
+		};
 		handleFilterTodo();
 		localStorage.setItem("todos", JSON.stringify(todos));
 	}, [filter, todos]);
-
-	const handleFilterTodo = () => {
-		if (filter === "completed") {
-			setFilteredTodos(todos.filter((todo) => todo.completed === true));
-		} else if (filter === "pending") {
-			setFilteredTodos(todos.filter((todo) => todo.completed === false));
-		} else {
-			setFilteredTodos(todos);
-		}
-	};
 
 	return (
 		<div className="App">
