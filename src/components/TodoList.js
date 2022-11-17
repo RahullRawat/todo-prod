@@ -1,13 +1,29 @@
 import React from "react";
+import Todo from "./Todo";
 
-const TodoList = ({ todo, handleDeleteTodo }) => {
+const TodoList = ({
+	todos,
+	setTodos,
+	filteredTodos,
+	setToggleBtn,
+	setTodoInput,
+	setIsEdit,
+}) => {
 	return (
-		<div key={todo.id} className="todo-container">
-			<p>Title : {todo.title}</p>
-			<p>Desc : {todo.desc}</p>
-			<p>Completed : {todo.completed ? "✅" : "❌"}</p>
-			<button>Edit</button>
-			<button onClick={() => handleDeleteTodo(todo.id)}>Delete</button>
+		<div className="todo-container">
+			<ul>
+				{filteredTodos.map((todo) => (
+					<Todo
+						todo={todo}
+						key={todo.id}
+						todos={todos}
+						setTodos={setTodos}
+						setTodoInput={setTodoInput}
+						setToggleBtn={setToggleBtn}
+						setIsEdit={setIsEdit}
+					/>
+				))}
+			</ul>
 		</div>
 	);
 };
