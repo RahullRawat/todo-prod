@@ -1,5 +1,6 @@
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
+import { toast } from "react-toastify";
 
 const TodoForm = ({
 	todoInput,
@@ -37,6 +38,7 @@ const TodoForm = ({
 			setToggleBtn(false);
 			setTodoInput(initialValues);
 			setIsEdit(null);
+			toast.success("Todo Updated Successfully");
 		} else {
 			setTodos([
 				...todos,
@@ -47,6 +49,7 @@ const TodoForm = ({
 					id: uuidv4(),
 				},
 			]);
+			toast.success("Todo Created");
 			setTodoInput(initialValues);
 		}
 	};

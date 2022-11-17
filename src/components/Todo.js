@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 
 const Todo = ({
 	todo,
@@ -14,6 +15,7 @@ const Todo = ({
 		e.stopPropagation();
 		const delTodo = todos.filter((to) => to.id !== todoID);
 		setTodos(delTodo);
+		toast.error("Todo Deleted");
 	};
 
 	const editTodo = (todoID, e) => {

@@ -4,6 +4,9 @@ import "./App.css";
 import TodoList from "./components/TodoList";
 import TodoForm from "./components/TodoForm";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const getTodoFromLocal = () => {
 	let list = localStorage.getItem("todos");
 	if (list) {
@@ -42,6 +45,18 @@ function App() {
 
 	return (
 		<div className="App">
+			<ToastContainer
+				position="bottom-center"
+				autoClose={2000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				theme="colored"
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+			/>
 			<header>
 				<h1 className="todo-heading">Todos</h1>
 			</header>
