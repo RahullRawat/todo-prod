@@ -84,3 +84,26 @@ select {
 	cursor: pointer;
 	width: 15%;
 }
+
+/* todo */
+.single-todo {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: var(--cta-color);
+	margin: 1rem 2rem;
+	padding: 0.8rem;
+	border-radius: 0.4rem;
+}
+
+.single-todo > li {
+	font-size: 1.2rem;
+}
+
+.btn-icons > button {
+	font-size: 1.2rem;
+	border: none;
+	background: transparent;
+	margin-left: 1rem;
+	cursor: pointer;
+}
