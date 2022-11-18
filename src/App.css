@@ -25,8 +25,9 @@ li {
 .App {
 	text-align: center;
 	max-width: 600px;
-	margin: 0 auto;
+	margin: 4rem auto;
 	padding: 1rem;
+	border: 1px solid var(--cta-color);
 }
 
 textarea {
@@ -64,11 +65,15 @@ form {
 	margin-bottom: 0.2rem;
 }
 
+.no-todos {
+	color: var(--cta-color);
+}
+
 .btn-div {
 	margin: 1rem 0;
 }
 
-.btn-div > button {
+.btn-primary {
 	font-size: 1rem;
 	font-weight: 600;
 	padding: 0.4rem 0.6rem;
@@ -77,6 +82,11 @@ form {
 	cursor: pointer;
 	border-radius: 0.3rem;
 	background-color: var(--cta-color);
+}
+
+.btn-primary:hover {
+	transform: scale(1.05);
+	transition: 0.4s all ease-in-out;
 }
 
 select {
@@ -91,7 +101,7 @@ select {
 	align-items: center;
 	justify-content: space-between;
 	background-color: var(--cta-color);
-	margin: 1rem 2rem;
+	margin: 1rem 0;
 	padding: 0.8rem;
 	border-radius: 0.4rem;
 }
