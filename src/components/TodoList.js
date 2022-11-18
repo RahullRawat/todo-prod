@@ -1,6 +1,7 @@
 import React from "react";
 import Todo from "./Todo";
 import { toast } from "react-toastify";
+import { Droppable } from "react-beautiful-dnd";
 
 const TodoList = ({
 	todos,
@@ -16,28 +17,36 @@ const TodoList = ({
 	};
 	return (
 		<div className="todo-container">
-			<ul>
-				{filteredTodos.length > 0 ? (
-					filteredTodos.map((todo) => (
-						<Todo
-							todo={todo}
-							key={todo.id}
-							todos={todos}
-							setTodos={setTodos}
-							setTodoInput={setTodoInput}
-							setToggleBtn={setToggleBtn}
-							setIsEdit={setIsEdit}
-						/>
-					))
-				) : (
-					<h2 className="no-todos">No Todos</h2>
+			<Droppable droppableId="todoslist">
+				{(provided) => (
+					<div ref={provided.innerRef} {...provided.droppableProps}>
+						<ul>
+							{filteredTodos.length > 0 ? (
+								filteredTodos.map((todo, index) => (
+									<Todo
+										todo={todo}
+										key={todo.id}
+										todos={todos}
+										setTodos={setTodos}
+										setTodoInput={setTodoInput}
+										setToggleBtn={setToggleBtn}
+										setIsEdit={setIsEdit}
+										index={index}
+									/>
+								))
+							) : (
+								<h2 className="no-todos">No Todos</h2>
+							)}
+							{provided.placeholder}
+							{todos.length > 0 ? (
+								<button className="btn-primary" onClick={clearAllTodoHandler}>
+									Clear All Todo's
+								</button>
+							) : null}
+						</ul>
+					</div>
 				)}
-				{todos.length > 0 ? (
-					<button className="btn-primary" onClick={clearAllTodoHandler}>
-						Clear All Todo's
-					</button>
-				) : null}
-			</ul>
+			</Droppable>
 		</div>
 	);
 };
