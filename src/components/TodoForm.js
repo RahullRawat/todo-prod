@@ -24,9 +24,7 @@ const TodoForm = ({
 
 	const addTodoHandler = (e) => {
 		e.preventDefault();
-		if (!todoInput.title && !todoInput.desc) {
-			toast.warning("Title and Description can't be empty");
-		} else if (todoInput.title && todoInput.desc && toggleBtn) {
+		if (todoInput.title && todoInput.desc && toggleBtn) {
 			setTodos(
 				todos.map((ele) => {
 					if (ele.id === isEdit) {
@@ -40,17 +38,21 @@ const TodoForm = ({
 			setIsEdit(null);
 			toast.success("Todo Updated Successfully");
 		} else {
-			setTodos([
-				...todos,
-				{
-					title: todoInput.title,
-					desc: todoInput.desc,
-					completed: false,
-					id: uuidv4(),
-				},
-			]);
-			toast.success("Todo Created");
-			setTodoInput(initialValues);
+			if (todoInput.title && todoInput.desc) {
+				setTodos([
+					...todos,
+					{
+						title: todoInput.title,
+						desc: todoInput.desc,
+						completed: false,
+						id: uuidv4(),
+					},
+				]);
+				toast.success("Todo Created");
+				setTodoInput(initialValues);
+			} else {
+				toast.warning("Both Title and Description Fields are mandatory");
+			}
 		}
 	};
 
@@ -79,11 +81,19 @@ const TodoForm = ({
 			/>
 			<div className="btn-div">
 				{toggleBtn ? (
-					<button onClick={addTodoHandler} type="submit">
+					<button
+						onClick={addTodoHandler}
+						className="btn-primary"
+						type="submit"
+					>
 						Update Todo
 					</button>
 				) : (
-					<button onClick={addTodoHandler} type="submit">
+					<button
+						onClick={addTodoHandler}
+						className="btn-primary"
+						type="submit"
+					>
 						Add Todo
 					</button>
 				)}
