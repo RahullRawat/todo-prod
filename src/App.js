@@ -11,9 +11,14 @@ import { DragDropContext } from "react-beautiful-dnd";
 
 const getTodoFromLocal = () => {
 	let list = localStorage.getItem("todos");
-	if (list) {
-		return JSON.parse(list);
-	} else {
+	try {
+		if (list) {
+			const res = JSON.parse(list);
+			return Array.isArray(res) ? res : [];
+		} else {
+			return [];
+		}
+	} catch (error) {
 		return [];
 	}
 };
