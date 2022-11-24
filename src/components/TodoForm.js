@@ -25,7 +25,7 @@ const TodoForm = ({
 	const addTodoHandler = (e) => {
 		e.preventDefault();
 		if (todoInput.title && todoInput.desc && toggleBtn) {
-			setTodos(
+			setTodos((todos) =>
 				todos.map((ele) => {
 					if (ele.id === isEdit) {
 						return { ...ele, title: todoInput.title, desc: todoInput.desc };
